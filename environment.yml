@@ -1,0 +1,10 @@
+name: wind-integral
+channels:
+  - astropy
+dependencies:
+  - python>=3.7
+  - requests
+  - astropy
+  - astroquery
+  - pip:
+    - cdflib
