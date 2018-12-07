@@ -1,4 +1,5 @@
-wind-integral-trajectory
+# Description
+This python script retrieves the trajectory of the WIND and Integral spacecrafts and plots them using Matplotlib
 
 # Install Conda environment
 - conda env create -f environment.yml
