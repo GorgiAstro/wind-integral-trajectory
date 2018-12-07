@@ -11,10 +11,11 @@ if __name__ == "__main__":
                    id_type='id')
     vec = obj.vectors()
     # By default, coordinates should be in J2000 ecliptic coordinates, but not sure...
-    integralDate_jd = [row[1] for row in vec] # Date is defined in Julian date format
-    integralPosition_au = [[row[3], row[4], row[5]] for row in vec]
+    import numpy as np
+    integralDate_jd = np.array([row[1] for row in vec]) # Date is defined in Julian date format
+    integralPosition_au = np.array([[row[3], row[4], row[5]] for row in vec])
     au2km = 149597870.7
-    integralPosition_km = [[pos[0]*au2km, pos[1]*au2km, pos[2]*au2km] for pos in integralPosition_au]
+    integralPosition_km = au2km * integralPosition_au
     print(integralPosition_km)
     print(integralDate_jd)
 
