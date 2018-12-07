@@ -6,7 +6,7 @@ if __name__ == "__main__":
     obj = Horizons(id=integralSpiceId,
                    location=observer,
                    epochs={'start': '2012-10-01',
-                             'stop': '2012-10-02',
+                             'stop': '2012-10-14',
                              'step':'10m'},
                    id_type='id')
     vec = obj.vectors()
@@ -16,8 +16,8 @@ if __name__ == "__main__":
     integralPosition_au = np.array([[row[3], row[4], row[5]] for row in vec])
     au2km = 149597870.7
     integralPosition_km = au2km * integralPosition_au
-    print(integralPosition_km)
-    print(integralDate_jd)
+    #print(integralPosition_km)
+    #print(integralDate_jd)
 
     ## Getting WIND position
     windDownloadUrl = "http://spdf.gsfc.nasa.gov/pub/data/wind/orbit/pre_or/2012/wi_or_pre_20121001_v02.cdf"
@@ -36,5 +36,23 @@ if __name__ == "__main__":
     #   - Geocentric equatorial inertial (GCI)
     #   - Geocentric solar magnetic (GSM)
     windEpoch_PB5 = cdfFile.varget(variable='Time_PB5')
-    print(windPosition_km)
-    print(windEpoch_PB5)
+    #print(windPosition_km)
+    #print(windEpoch_PB5)
+
+    ## Writing Earth shape for plotting
+    R_earth_km = 6371.0
+    x_earth_km = np.array([R_earth_km * np.cos(t) for t in np.linspace(0, 2*np.pi, 100)])
+    y_earth_km = np.array([R_earth_km * np.sin(t) for t in np.linspace(0, 2*np.pi, 100)])
+
+    ## Plotting
+    import matplotlib.pyplot as plt
+    plt.plot(x_earth_km, y_earth_km, 'k')
+    plt.plot(0.0, 0.0, 'k', marker='x', label='Earth')
+    plt.plot(windPosition_km[:, 0], windPosition_km[:, 1], label='WIND')
+    plt.plot(integralPosition_km[:, 0], integralPosition_km[:, 1], label='Integral')
+    plt.xlabel('X (km)')
+    plt.ylabel('Y (km)')
+    plt.title('Integral and WIND trajectory around the Earth, Earth-centered inertial coordinates in ecliptic plane')
+    plt.axis('equal')
+    plt.legend()
+    plt.show()
