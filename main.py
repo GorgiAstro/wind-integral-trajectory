@@ -2,7 +2,7 @@ if __name__ == "__main__":
     ## Parameters
     from datetime import datetime, timezone
     startDate = datetime(2012, 10, 1, tzinfo=timezone.utc)
-    endDate = datetime(2012, 11, 15, tzinfo=timezone.utc)
+    endDate = datetime(2013, 6, 1, tzinfo=timezone.utc)
 
     ## Getting Integral position
     integralSpiceId = '-198'
@@ -31,21 +31,20 @@ if __name__ == "__main__":
     windPosition_km = None
     windEpoch_PB5 = None
     p = Path('.')
-    for windFileName in sorted(p.glob('../../pre_or/*/*.cdf')):
+    for windFileName in sorted(p.glob('wind_trajectory/*/*.cdf')):
         fileNameWithoutPath = windFileName.name
         fileYear = int(fileNameWithoutPath[10:14])
         fileMonth = int(fileNameWithoutPath[14:16])
         fileDay = int(fileNameWithoutPath[16:18])
         fileDate = datetime(fileYear, fileMonth, fileDay, tzinfo=timezone.utc)
         if (fileDate >= startDate) and (fileDate <= endDate):
-            print(fileDate)
             cdfFile = cdflib.CDF(windFileName)
             if windPosition_km is None:
                 windPosition_km = cdfFile.varget(variable='GCI_POS')
                 windEpoch_PB5 = cdfFile.varget(variable='Time_PB5')
             else:
                 windPosition_km = np.concatenate((windPosition_km, cdfFile.varget(variable='GCI_POS')))
-                # Getting position in Geocentral solar ecliptic (GSE) frame
+                # Getting position in Geocentric solar ecliptic (GSE) frame
                 # Other frames are available in the CDF file:
                 #   - Geocentric equatorial inertial (GCI)
                 #   - Geocentric solar magnetic (GSM)
