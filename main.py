@@ -48,8 +48,10 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
     plt.plot(x_earth_km, y_earth_km, 'k')
     plt.plot(0.0, 0.0, 'k', marker='x', label='Earth')
-    plt.plot(windPosition_km[:, 0], windPosition_km[:, 1], label='WIND')
-    plt.plot(integralPosition_km[:, 0], integralPosition_km[:, 1], label='Integral')
+    plt.plot(windPosition_km[:, 0], windPosition_km[:, 1], 'C0', label='WIND',)
+    plt.plot(windPosition_km[-1, 0], windPosition_km[-1, 1], 'C0', marker='.', markersize=10)
+    plt.plot(integralPosition_km[:, 0], integralPosition_km[:, 1], 'C1', label='Integral')
+    plt.plot(integralPosition_km[-1, 0], integralPosition_km[-1, 1], 'C1', marker='.', markersize=10)
     plt.xlabel('X (km)')
     plt.ylabel('Y (km)')
     plt.title('Integral and WIND trajectory around the Earth, Earth-centered inertial coordinates in ecliptic plane')
