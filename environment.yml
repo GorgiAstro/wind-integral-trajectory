@@ -13,5 +13,8 @@ dependencies:
   - nodejs # Needed to install jupyterlab extensions
   - numpy
   - pandas
+  - plotly
+  - plotly-orca # Needed to export plotly plots
+  - psutil
   - pip:
     - cdflib
