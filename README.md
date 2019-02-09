@@ -5,8 +5,14 @@ The WIND data located in the folder wind_trajectory was downloaded from ftp://sp
 # Install Conda environment
 `conda env create -f environment.yml`
 
+# Install Jupyter Lab extensions
+## Recommended extensions
+I recommend the following two extensions:
+* Table of contents: `jupyter labextension install @jupyterlab/toc`
+* Variable inspect: `jupyter labextension install @lckr/jupyterlab_variableinspector`
+
 # Run program in Conda environment
 - Enter the conda environment:
   - In Linux: `source activate wind-integral`
   - In Windows: `activate wind-integral`
-- `python main.py`
+- Start Jupyter lab by typing `jupyter lab`

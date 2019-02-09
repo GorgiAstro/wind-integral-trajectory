@@ -8,5 +8,10 @@ dependencies:
   - matplotlib
   - astropy
   - astroquery
+  - jupyter
+  - jupyterlab
+  - nodejs # Needed to install jupyterlab extensions
+  - numpy
+  - pandas
   - pip:
     - cdflib
