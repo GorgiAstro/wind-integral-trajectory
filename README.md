@@ -3,7 +3,11 @@ This python script retrieves the trajectory of the WIND and Integral spacecrafts
 The WIND data located in the folder wind_trajectory was downloaded from ftp://spdf.gsfc.nasa.gov/pub/data/wind/orbit/pre_or/
 
 # Install Conda environment
+If running for the first time:
 `conda env create -f environment.yml`
+
+If the environment already exists, update it using:
+`conda env update -f environment.yml`
 
 # Install Jupyter Lab extensions
 ## Mandatory extensions
