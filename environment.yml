@@ -1,6 +1,7 @@
 name: wind-integral
 channels:
   - astropy
+  - plotly
 dependencies:
   - python>=3.7
   - requests
@@ -12,7 +13,8 @@ dependencies:
   - nodejs # Needed to install jupyterlab extensions
   - numpy
   - pandas
+  - plotly
+  - plotly-orca
   - psutil
   - pip:
     - cdflib
-    - plotly
