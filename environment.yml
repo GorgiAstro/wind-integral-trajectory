@@ -2,6 +2,7 @@ name: wind-integral
 channels:
   - astropy
   - plotly
+  - conda-forge
 dependencies:
   - python>=3.7
   - requests
@@ -16,5 +17,7 @@ dependencies:
   - plotly
   - plotly-orca
   - psutil
+  - orekit==9.3
   - pip:
     - cdflib
+    - spacetrack
